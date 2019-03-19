@@ -1,11 +1,11 @@
 Name:           squeezed
-Version:        0.18.0
-Release:        5%{?dist}
+Version:        0.19.0
+Release:        7%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
 Source0:        https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.18.0&format=tar.gz&prefix=squeezed-0.18.0#/squeezed-0.18.0.tar.gz) = ff2c80467661d0013158c2168812da83d3b0d056
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.19.0&format=tar.gz&prefix=squeezed-0.19.0#/squeezed-0.19.0.tar.gz) = 3ff31b91e839e0d6b1af248f2ead3b025a9df2b4
 Source1:        squeezed.service
 Source2:        squeezed-sysconfig
 Source3:        squeezed-conf
@@ -59,6 +59,9 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Thu May 10 2018 Christian Lindig <christian.lindig@citrix.com> - 0.19.0-1
+- jbuild: remove obsolete (and unused) rpclib.syntax dependency
+
 * Wed Feb 28 2018 Christian Lindig <christian.lindig@citrix.com> - 0.18.0-1
 - Use memory.ml from xcp-idl
 - Add awareness of PV-in-PVH guests
