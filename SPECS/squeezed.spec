@@ -1,16 +1,19 @@
 Name:           squeezed
-Version:        0.19.0
-Release:        7%{?dist}
+Version:        0.21.0
+Release:        1%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
-Source0:        https://code.citrite.net/rest/archive/latest/projects/XSU/repos/%{name}/archive?at=v%{version}&format=tar.gz&prefix=%{name}-%{version}#/%{name}-%{version}.tar.gz
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.19.0&format=tar.gz&prefix=squeezed-0.19.0#/squeezed-0.19.0.tar.gz) = 3ff31b91e839e0d6b1af248f2ead3b025a9df2b4
-Source1:        squeezed.service
-Source2:        squeezed-sysconfig
-Source3:        squeezed-conf
+
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.21.0&format=tar.gz&prefix=squeezed-0.21.0#/squeezed-0.21.0.tar.gz
+Source1: SOURCES/squeezed/squeezed.service
+Source2: SOURCES/squeezed/squeezed-sysconfig
+Source3: SOURCES/squeezed/squeezed-conf
+
+
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.21.0&format=tar.gz&prefix=squeezed-0.21.0#/squeezed-0.21.0.tar.gz) = 8db9e3bbfbfacb372af3de238d27388311d97998
+
 BuildRequires:  ocaml
-BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  opam
 BuildRequires:  xs-opam-repo
 BuildRequires:  ocaml-xcp-idl-devel
@@ -59,6 +62,12 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Tue Dec 04 2018 Christian Lindig <christian.lindig@citrix.com> - 0.21.0-1
+- Moved from jbuilder to dune and deprecated xcp in favour of xapi-idl.
+
+* Fri Nov 16 2018 Christian Lindig <christian.lindig@citrix.com> - 0.20.0-1
+- New ocaml-rpc
+
 * Thu May 10 2018 Christian Lindig <christian.lindig@citrix.com> - 0.19.0-1
 - jbuild: remove obsolete (and unused) rpclib.syntax dependency
 
