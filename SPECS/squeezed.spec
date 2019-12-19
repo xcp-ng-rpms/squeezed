@@ -1,17 +1,17 @@
 Name:           squeezed
-Version:        0.21.0
+Version:        0.23.0
 Release:        1%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.21.0&format=tar.gz&prefix=squeezed-0.21.0#/squeezed-0.21.0.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.23.0&format=tar.gz&prefix=squeezed-0.23.0#/squeezed-0.23.0.tar.gz
 Source1: SOURCES/squeezed/squeezed.service
 Source2: SOURCES/squeezed/squeezed-sysconfig
 Source3: SOURCES/squeezed/squeezed-conf
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.21.0&format=tar.gz&prefix=squeezed-0.21.0#/squeezed-0.21.0.tar.gz) = 8db9e3bbfbfacb372af3de238d27388311d97998
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.23.0&format=tar.gz&prefix=squeezed-0.23.0#/squeezed-0.23.0.tar.gz) = 75956f32334f606c73ab5652970650fc965170ee
 
 BuildRequires:  ocaml
 BuildRequires:  opam
@@ -26,6 +26,7 @@ BuildRequires:  systemd
 BuildRequires:  systemd-devel
 Requires:       message-switch
 
+Requires:       jemalloc
 %{?systemd_requires}
 
 %description
@@ -36,6 +37,9 @@ Memory ballooning daemon for the xapi toolstack.
 
 %build
 make
+
+%check
+make test
 
 %install
 make install DESTDIR=%{buildroot}%{_sbindir}
@@ -62,6 +66,16 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Mon Oct 14 2019 Christian Lindig <christian.lindig@citrix.com> - 0.23.0-1
+- CA-327822: account for memory-offset during set_maxmem
+
+* Fri Aug 23 2019 Edwin Török <edvin.torok@citrix.com> - 0.22.0-2
+- bump packages after xs-opam update
+
+* Thu Aug 15 2019 Christian Lindig <christian.lindig@citrix.com> - 0.22.0-1
+- maintenance: use rpclib instead of rpc
+- maintenance: use ocaml's ci scripts for travis
+
 * Tue Dec 04 2018 Christian Lindig <christian.lindig@citrix.com> - 0.21.0-1
 - Moved from jbuilder to dune and deprecated xcp in favour of xapi-idl.
 
