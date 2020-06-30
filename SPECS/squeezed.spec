@@ -1,17 +1,17 @@
 Name:           squeezed
-Version:        0.23.0
+Version:        0.27.0
 Release:        1%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.23.0&format=tar.gz&prefix=squeezed-0.23.0#/squeezed-0.23.0.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.27.0&format=tar.gz&prefix=squeezed-0.27.0#/squeezed-0.27.0.tar.gz
 Source1: SOURCES/squeezed/squeezed.service
 Source2: SOURCES/squeezed/squeezed-sysconfig
 Source3: SOURCES/squeezed/squeezed-conf
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.23.0&format=tar.gz&prefix=squeezed-0.23.0#/squeezed-0.23.0.tar.gz) = 75956f32334f606c73ab5652970650fc965170ee
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.27.0&format=tar.gz&prefix=squeezed-0.27.0#/squeezed-0.27.0.tar.gz) = 6479a9758f6e8e1effafa192dce587b30412535f
 
 BuildRequires:  ocaml
 BuildRequires:  opam
@@ -66,6 +66,23 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Tue May 19 2020 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-1
+- maintenance: prepare for ocamlformat
+- maintenance: format code with ocamlformat
+- maintenance: format comments with ocamlformat
+
+* Mon Apr 06 2020 Christian Lindig <christian.lindig@citrix.com> - 0.26.0-1
+- The fixes below had been backed out and are now put back in
+- "CA-335725: Calculate a constant boot time host free memory""
+- "CA-335725: Refine some variable names"" 
+- "CA-335725: Update the tolerance of free memory difference""
+
+* Tue Mar 10 2020 Christian Lindig <christian.lindig@citrix.com> - 0.25.0-1
+- Revert "CA-335725: Calculate a constant boot time host free memory"
+
+* Fri Mar 06 2020 Christian Lindig <christian.lindig@citrix.com> - 0.24.0-1
+- Use shared Travis configuration to fix the CI
+
 * Mon Oct 14 2019 Christian Lindig <christian.lindig@citrix.com> - 0.23.0-1
 - CA-327822: account for memory-offset during set_maxmem
 
