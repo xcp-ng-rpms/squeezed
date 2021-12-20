@@ -1,6 +1,6 @@
 Name:           squeezed
 Version:        0.27.0
-Release:        1%{?dist}
+Release:        4%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
@@ -25,6 +25,7 @@ BuildRequires:  xen-libs
 BuildRequires:  systemd
 BuildRequires:  systemd-devel
 Requires:       message-switch
+Requires:       libev
 
 Requires:       jemalloc
 %{?systemd_requires}
@@ -66,6 +67,15 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Mon Sep 27 2021 Pau Ruiz Safont <pau.safont@citrix.com> - 0.27.0-4
+- Bump package for libev dependency
+
+* Mon Sep 27 2021 Pau Ruiz Safont <pau.safont@citrix.com> - 0.27.0-3
+- Bump package after xs-opam update
+
+* Tue Jul 13 2021 Edwin Török <edvin.torok@citrix.com> - 0.27.0-2
+- bump packages after xs-opam update
+
 * Tue May 19 2020 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-1
 - maintenance: prepare for ocamlformat
 - maintenance: format code with ocamlformat
