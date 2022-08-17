@@ -1,6 +1,6 @@
 Name:           squeezed
 Version:        0.27.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL
 URL:            https://github.com/xapi-project/squeezed
@@ -67,6 +67,9 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Wed Aug 17 2022 Gael Duperrey <gduperrey@vates.fr> - 0.27.0-5
+- Rebuild for updated ocaml-xcp-idl from XS82ECU1011
+
 * Mon Sep 27 2021 Pau Ruiz Safont <pau.safont@citrix.com> - 0.27.0-4
 - Bump package for libev dependency
 
