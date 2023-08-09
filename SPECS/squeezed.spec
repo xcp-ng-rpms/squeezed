@@ -1,28 +1,20 @@
+%global package_speccommit ad8d2bc087bea5d1251acbffbb96472b820e88fa
+%global package_srccommit v0.27.0
 Name:           squeezed
-Version:        0.27.0
-Release:        5%{?dist}
+Version: 0.27.0
+Release: 10.1%{?xsrel}%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
-License:        LGPL
+License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 URL:            https://github.com/xapi-project/squeezed
-
-Source0: https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.27.0&format=tar.gz&prefix=squeezed-0.27.0#/squeezed-0.27.0.tar.gz
-Source1: SOURCES/squeezed/squeezed.service
-Source2: SOURCES/squeezed/squeezed-sysconfig
-Source3: SOURCES/squeezed/squeezed-conf
-
-
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XSU/repos/squeezed/archive?at=v0.27.0&format=tar.gz&prefix=squeezed-0.27.0#/squeezed-0.27.0.tar.gz) = 6479a9758f6e8e1effafa192dce587b30412535f
-
+Source0: squeezed-0.27.0.tar.gz
+Source1: squeezed.service
+Source2: squeezed-sysconfig
+Source3: squeezed-conf
 BuildRequires:  ocaml
 BuildRequires:  opam
 BuildRequires:  xs-opam-repo
 BuildRequires:  ocaml-xcp-idl-devel
-BuildRequires:  xen-devel
-BuildRequires:  xen-dom0-libs-devel
-BuildRequires:  xen-dom0-libs
-BuildRequires:  xen-libs-devel
-BuildRequires:  xen-libs
-BuildRequires:  systemd
+BuildRequires:  xen-ocaml-devel
 BuildRequires:  systemd-devel
 Requires:       message-switch
 Requires:       libev
@@ -49,8 +41,8 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %{__install} -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/squeezed.conf
 
 %files
-%doc README.md 
-%doc LICENSE 
+%doc README.md
+%doc LICENSE
 %doc MAINTAINERS
 %{_sbindir}/squeezed
 %{_unitdir}/squeezed.service
@@ -67,6 +59,23 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Wed Aug 09 2023 Gael Duperrey <gduperrey@vates.fr> - 0.27.0-10.1
+- Rebuild for updated ocaml-xcp-idl from XS82ECU1040
+- *** Upstream changelog ***
+- * Thu Jul 20 2023 Rob Hoes <rob.hoes@citrix.com> - 0.27.0-10
+- - Bump release and rebuild
+- * Mon Jun 19 2023 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-9
+- - Bump release and rebuild
+- * Thu Jun 08 2023 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-8
+- - Bump release and rebuild
+- * Fri May 12 2023 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-7
+- - Bump release and rebuild
+- * Fri May 12 2023 Christian Lindig <christian.lindig@citrix.com> - 0.27.0-6
+- - Bump release and rebuild
+- * Thu Feb 23 2023 Pau Ruiz Safont <pau.ruizsafont@cloud.com> - 0.27.0-5
+- - Drop incorrect BuildRequires - only the devel packages should be specified
+- - Change license to match source repo
+
 * Wed Aug 17 2022 Gael Duperrey <gduperrey@vates.fr> - 0.27.0-5
 - Rebuild for updated ocaml-xcp-idl from XS82ECU1011
 
@@ -87,7 +96,7 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 * Mon Apr 06 2020 Christian Lindig <christian.lindig@citrix.com> - 0.26.0-1
 - The fixes below had been backed out and are now put back in
 - "CA-335725: Calculate a constant boot time host free memory""
-- "CA-335725: Refine some variable names"" 
+- "CA-335725: Refine some variable names""
 - "CA-335725: Update the tolerance of free memory difference""
 
 * Tue Mar 10 2020 Christian Lindig <christian.lindig@citrix.com> - 0.25.0-1
