@@ -1,8 +1,8 @@
-%global package_speccommit ad8d2bc087bea5d1251acbffbb96472b820e88fa
+%global package_speccommit feb6185cfe58ba92c985634d716c60a4fbf21df7
 %global package_srccommit v0.27.0
 Name:           squeezed
 Version: 0.27.0
-Release: 10.1%{?xsrel}%{?dist}
+Release: 11.1%{?xsrel}%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 URL:            https://github.com/xapi-project/squeezed
@@ -59,6 +59,13 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Fri Oct 13 2023 Samuel Verschelde <stormi-xcp@ylix.fr> - 0.27.0-11.1
+- Rebuild after sync with hotfix XS82ECU1049
+- No source changes: only rebuild for dependencies
+- *** Upstream changelog ***
+- * Mon Oct 02 2023 Pau Ruiz Safont <pau.ruizsafont@cloud.com> - 0.27.0-11
+- - Bump release and rebuild
+
 * Wed Aug 09 2023 Gael Duperrey <gduperrey@vates.fr> - 0.27.0-10.1
 - Rebuild for updated ocaml-xcp-idl from XS82ECU1040
 - *** Upstream changelog ***
