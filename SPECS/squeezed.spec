@@ -1,8 +1,8 @@
-%global package_speccommit ad8d2bc087bea5d1251acbffbb96472b820e88fa
+%global package_speccommit feb6185cfe58ba92c985634d716c60a4fbf21df7
 %global package_srccommit v0.27.0
 Name:           squeezed
 Version: 0.27.0
-Release: 10%{?xsrel}%{?dist}
+Release: 11%{?xsrel}%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 URL:            https://github.com/xapi-project/squeezed
@@ -59,6 +59,9 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Mon Oct 02 2023 Pau Ruiz Safont <pau.ruizsafont@cloud.com> - 0.27.0-11
+- Bump release and rebuild
+
 * Thu Jul 20 2023 Rob Hoes <rob.hoes@citrix.com> - 0.27.0-10
 - Bump release and rebuild
 
