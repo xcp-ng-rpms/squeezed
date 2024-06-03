@@ -1,4 +1,4 @@
-%global package_speccommit feb6185cfe58ba92c985634d716c60a4fbf21df7
+%global package_speccommit 21447cb9b459ab20449c68ef332ff6e77e012722
 %global package_srccommit v0.27.0
 Name:           squeezed
 Version: 0.27.0
@@ -59,6 +59,25 @@ make install DESTDIR=%{buildroot}%{_sbindir}
 %systemd_postun squeezed.service
 
 %changelog
+* Mon Jun 03 2024 Gael Duperrey <gduperrey@vates.tech> - 0.27.0-18.1
+- Rebuild after sync with hotfix XS82ECU1064
+- No source changes: only rebuild for dependencies
+- *** Upstream changelog ***
+- * Fri Mar 08 2024 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-18
+- - Bump release and rebuild
+- * Wed Mar 06 2024 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-17
+- - Bump release and rebuild
+- * Tue Mar 05 2024 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-16
+- - Bump release and rebuild
+- * Fri Nov 03 2023 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-15
+- - Bump release and rebuild
+- * Tue Oct 24 2023 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-14
+- - Bump release and rebuild
+- * Tue Oct 24 2023 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-13
+- - Bump release and rebuild
+- * Wed Oct 18 2023 Christian Lindig <christian.lindig@cloud.com> - 0.27.0-12
+- - Bump release and rebuild
+
 * Fri Oct 13 2023 Samuel Verschelde <stormi-xcp@ylix.fr> - 0.27.0-11.1
 - Rebuild after sync with hotfix XS82ECU1049
 - No source changes: only rebuild for dependencies
