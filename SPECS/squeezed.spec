@@ -2,7 +2,7 @@
 %global package_srccommit v0.27.0
 Name:           squeezed
 Version: 0.27.0
-Release: 11.1%{?xsrel}%{?dist}
+Release: 18.1%{?xsrel}%{?dist}
 Summary:        Memory ballooning daemon for the xapi toolstack
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 URL:            https://github.com/xapi-project/squeezed
